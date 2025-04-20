@@ -2,218 +2,299 @@
 <html lang="en">
 <head>
     <style>
-    /* Global Styles */
-        body {
+    /* Base Styles */
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --accent: #e74c3c;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --reference: #1abc9c;
+        }
+        
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
             line-height: 1.6;
             color: #333;
             background-color: #f9f9f9;
         }
         
-        a {
-            color: #0056b3;
-            text-decoration: none;
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
         }
         
-        a:hover {
-            text-decoration: underline;
-        }
-        
-        ul {
-            padding-left: 20px;
-        }
-        
-        h1, h2, h3, h4 {
-            margin-top: 0;
-        }
-        
-        /* Header */
+        /* Header Styles */
         header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 1rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
         }
         
         .logo-container {
             display: flex;
             align-items: center;
+            gap: 15px;
         }
         
         .logo {
-            width: 50px;
-            margin-right: 15px;
+            height: 50px;
+            width: auto;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            color: var(--dark);
         }
         
         nav ul {
-            list-style: none;
             display: flex;
-            gap: 1rem;
-            padding: 0;
-            margin: 0;
+            list-style: none;
+            gap: 20px;
         }
         
         nav a {
-            color: #fff;
-            font-weight: bold;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
         }
         
         /* Hero Section */
-        .subject-hero.cbse-hero {
-            background-color: #ecf0f1;
-            padding: 3rem 2rem;
+        .reference-hero {
+            background: linear-gradient(135deg, var(--reference), #16a085);
+            color: white;
+            padding: 150px 0 80px;
             text-align: center;
         }
         
-        .subject-hero h2 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+        .reference-hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
         }
         
-        .subject-hero p {
-            font-size: 1.1rem;
-            color: #555;
+        .reference-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
         }
         
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 2rem;
-        }
-        
-        /* Subject Overview */
-        .subject-overview {
-            margin-bottom: 3rem;
-        }
-        
-        .subject-overview h3 {
-            color: #2c3e50;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        /* Category Grid */
-        .subject-categories h3,
-        .subject-highlights h3,
-        .subject-links h3 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-        
-        .category-grid,
-        .highlight-grid,
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .category-card,
-        .highlight-card,
-        .link-card {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
-        
-        .category-card:hover,
-        .highlight-card:hover,
-        .link-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .category-card h4,
-        .highlight-card h4 {
-            margin-bottom: 0.5rem;
-            color: #1a5276;
-        }
-        
-        /* Highlight Cards */
-        .highlight-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-            margin-bottom: 1rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            margin-top: 0.5rem;
-            background-color: #1a5276;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background 0.3s ease;
-        }
-        
-        .btn:hover {
-            background-color: #154360;
-        }
-        
-        /* Quick Links */
-        .subject-links {
-            background-color: #f0f3f4;
-            padding: 2rem 0;
-        }
-        
-        .link-card {
-            display: flex;
-            align-items: center;
-            padding: 1rem;
+        /* Reference Content */
+        .reference-content {
+            padding: 60px 0;
             background-color: white;
+        }
+        
+        .reference-overview {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: var(--light);
             border-radius: 8px;
-            font-weight: 500;
-            font-size: 1.1rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            transition: background-color 0.3s ease;
         }
         
-        .link-card i {
-            font-size: 1.5rem;
-            margin-right: 0.75rem;
-            color: #2980b9;
+        .reference-overview h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
         }
         
-        .link-card:hover {
-            background-color: #eaf2f8;
+        .reference-category {
+            margin-bottom: 40px;
+            background-color: var(--light);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
         
-        /* Responsive */
+        .reference-category h4 {
+            color: var(--reference);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            border-bottom: 2px solid var(--reference);
+            padding-bottom: 8px;
+        }
+        
+        .reference-category ul {
+            list-style-position: inside;
+            padding-left: 15px;
+        }
+        
+        .reference-category li {
+            margin-bottom: 8px;
+            padding-left: 10px;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
-                margin-top: 1rem;
+            header {
+                padding: 10px 0;
             }
+            
+            .logo-container {
+                justify-content: center;
+            }
+            
+            nav ul {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px 20px;
+            }
+            
+            .reference-hero {
+                padding: 120px 0 60px;
+            }
+            
+            .reference-hero h2 {
+                font-size: 2rem;
+            }
+            
+            .reference-category {
+                padding: 20px;
+            }
+        }
         
-            .category-grid,
-            .highlight-grid,
-            .links-grid {
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .reference-hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .reference-hero p {
+                font-size: 1rem;
+            }
+            
+            .footer-content {
                 grid-template-columns: 1fr;
             }
-        
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-        </style>
+        }</style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DBSE Resources | SOSE Libraries</title>
+    <title>Reference Materials | SOSE Libraries</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* All the same CSS as in the main file */
-        /* (Copy the entire style section from the main file here) */
+        /* Copy all CSS styles from your main page here */
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --accent: #e74c3c;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --reference: #1abc9c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        /* Continue with all other CSS styles from your main page */
+        /* ... */
+        
+        /* Specific styles for reference page */
+        .reference-hero {
+            background: linear-gradient(135deg, var(--reference), #16a085);
+            color: white;
+            padding: 150px 0 80px;
+            text-align: center;
+        }
+        
+        .reference-content {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .reference-category {
+            margin-bottom: 40px;
+            background-color: var(--light);
+            padding: 25px;
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body>
@@ -232,112 +313,58 @@
         </nav>
     </header>
 
-    <section class="subject-hero dbse-hero">
-        <div class="subject-hero-content">
-            <h2>DBSE Resources</h2>
-            <p>Explore our comprehensive collection of Delhi Board of Secondary Education materials</p>
+    <section class="reference-hero">
+        <div class="container">
+            <h2>Reference Materials</h2>
+            <p>Explore our extensive collection of authoritative reference resources</p>
         </div>
     </section>
 
-    <section class="subject-content">
+    <section class="reference-content">
         <div class="container">
-            <div class="subject-overview">
-                <h3>About DBSE Collection</h3>
-                <p>The Delhi Board of Secondary Education (DBSE) section of our library contains all the essential resources for students following this curriculum. Our collection is carefully curated to support students from Class 1 through Class 12.</p>
-                <p>We provide:</p>
+            <div class="reference-overview">
+                <h3>About Our Reference Collection</h3>
+                <p>Our reference section contains specialized materials that provide authoritative information across various subjects. These resources are perfect for research, projects, and expanding your knowledge beyond standard textbooks.</p>
+            </div>
+
+            <div class="reference-category">
+                <h4>Encyclopedias</h4>
                 <ul>
-                    <li>All prescribed textbooks for each class and subject</li>
-                    <li>Supplementary study materials and guides</li>
-                    <li>Previous years' question papers</li>
-                    <li>Model test papers and sample answers</li>
-                    <li>Subject-specific reference books</li>
+                    <li>World Book Encyclopedia (2023 Edition)</li>
+                    <li>Encyclopedia Britannica (Complete Set)</li>
+                    <li>Science Encyclopedia for Students</li>
+                    <li>Historical Encyclopedia of India</li>
                 </ul>
-                <p>Our DBSE collection is updated annually to ensure alignment with the latest curriculum changes and examination patterns. The materials are organized by class and subject for easy access.</p>
             </div>
 
-            <div class="subject-categories">
-                <h3>Key Features of Our DBSE Collection</h3>
-                <div class="category-grid">
-                    <div class="category-card">
-                        <h4>Textbooks</h4>
-                        <p>Complete set of prescribed textbooks for all classes (1-12) including:</p>
-                        <ul>
-                            <li>Mathematics</li>
-                            <li>Science (Physics, Chemistry, Biology)</li>
-                            <li>Social Studies</li>
-                            <li>Languages (English, Hindi, Sanskrit)</li>
-                            <li>Computer Science</li>
-                        </ul>
-                    </div>
-                    <div class="category-card">
-                        <h4>Exam Preparation</h4>
-                        <p>Resources to help students excel in board exams:</p>
-                        <ul>
-                            <li>10 years of solved question papers</li>
-                            <li>Model test papers with solutions</li>
-                            <li>Chapter-wise important questions</li>
-                            <li>Marking scheme and answer writing guides</li>
-                        </ul>
-                    </div>
-                    <div class="category-card">
-                        <h4>Supplementary Materials</h4>
-                        <p>Additional learning resources:</p>
-                        <ul>
-                            <li>Concept maps and quick revision guides</li>
-                            <li>Workbooks with practice problems</li>
-                            <li>Laboratory manuals for science subjects</li>
-                            <li>Sample projects and assignments</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="reference-category">
+                <h4>Dictionaries</h4>
+                <ul>
+                    <li>Oxford English Dictionary</li>
+                    <li>Cambridge Advanced Learner's Dictionary</li>
+                    <li>Hindi-English Comprehensive Dictionary</li>
+                    <li>Dictionary of Scientific Terms</li>
+                </ul>
             </div>
 
-            <div class="subject-highlights">
-                <h3>Popular DBSE Resources</h3>
-                <div class="highlight-grid">
-                    <div class="highlight-card">
-                        <img src="https://via.placeholder.com/150x200" alt="DBSE English Guide">
-                        <h4>DBSE English Master Guide</h4>
-                        <p>Comprehensive guide covering grammar, writing skills, and literature analysis with sample papers.</p>
-                        <a href="#" class="btn">View Details</a>
-                    </div>
-                    <div class="highlight-card">
-                        <img src="https://via.placeholder.com/150x200" alt="DBSE Mathematics Solved Papers">
-                        <h4>Mathematics Solved Papers (2013-2023)</h4>
-                        <p>Complete solutions for DBSE Mathematics papers from past 10 years with step-by-step explanations.</p>
-                        <a href="#" class="btn">View Details</a>
-                    </div>
-                    <div class="highlight-card">
-                        <img src="https://via.placeholder.com/150x200" alt="DBSE Science Practical Guide">
-                        <h4>Science Practical Handbook</h4>
-                        <p>Detailed procedures, diagrams, and observation tables for all prescribed practical experiments.</p>
-                        <a href="#" class="btn">View Details</a>
-                    </div>
-                </div>
+            <div class="reference-category">
+                <h4>Subject References</h4>
+                <ul>
+                    <li>Atlas of World Geography</li>
+                    <li>Handbook of Chemistry and Physics</li>
+                    <li>Mathematics Formulas and Theorems</li>
+                    <li>Literary Companion Series</li>
+                </ul>
             </div>
-        </div>
-    </section>
 
-    <section class="subject-links">
-        <div class="container">
-            <h3>Additional Resources</h3>
-            <div class="links-grid">
-                <a href="#" class="link-card">
-                    <i class="fas fa-book"></i>
-                    <span>DBSE Syllabus</span>
-                </a>
-                <a href="#" class="link-card">
-                    <i class="fas fa-file-alt"></i>
-                    <span>Exam Pattern</span>
-                </a>
-                <a href="#" class="link-card">
-                    <i class="fas fa-question-circle"></i>
-                    <span>FAQs</span>
-                </a>
-                <a href="#" class="link-card">
-                    <i class="fas fa-download"></i>
-                    <span>Download Materials</span>
-                </a>
+            <div class="reference-category">
+                <h4>Digital Resources</h4>
+                <ul>
+                    <li>Online Encyclopedia Access</li>
+                    <li>E-reference Books</li>
+                    <li>Research Database Subscriptions</li>
+                    <li>Citation Tools Guide</li>
+                </ul>
             </div>
         </div>
     </section>
